@@ -1,0 +1,76 @@
+/** BEGIN RESET **/
+/* Box sizing rules */ *, *::before, *::after { box-sizing: border-box; } /* Remove default margin */ body, h1, h2, h3, h4, p, figure, blockquote, dl, dd { margin: 0; } /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */ ul[role="list"], ol[role="list"] { list-style: none; } /* Set core root defaults */ html { scroll-behavior: smooth; } /* Set core body defaults */ body { min-height: 100vh; text-rendering: optimizeSpeed; line-height: 1.5; } /* A elements that don't have a class get default styles */ a:not([class]) { text-decoration-skip-ink: auto; } /* Make images easier to work with */ img, picture { max-width: 100%; display: block; } /* Inherit fonts for inputs and buttons */ input, button, textarea, select { font: inherit; } /* Remove all animations and transitions for people that prefer not to see them */ @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }
+/** END RESET **/
+
+body {
+  padding: 2em;
+  background-image: url(./assets/than.png);
+  background-size: cover;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+textarea {
+  width: 100%;
+  height: 100%;
+  padding: 16px 32px;
+  border-radius: 8px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+}
+
+.results {
+  min-height: 10vh;
+  width: 40vw;
+  margin-top: 32px;
+}
+
+.box {
+  --font: var(--font--default);
+  --border-color: #e5ebdf;
+  --background-color: transparent;
+  --border-radius: 8px;
+
+  width: 100%;
+  padding: 10px 32px 10px 16px;
+  border: 3px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--background-color);
+  transition:
+    background-color 300ms ease-in-out,
+    color 300ms ease-in-out,
+    border-color 300ms ease-in-out;
+}
+
+.box + .box {
+  margin-top: 8px;
+  border-width: 0;
+}
+
+.box-interactive {
+  --background-color: #125b4a;
+  cursor: pointer;
+}
+
+.box-interactive:hover {
+  --background-color: transparent;
+}
+
+.box-interactive:focus {
+  --border-color: #115462;
+  box-shadow: 0 0 0 3px #e5ebdf;
+  outline: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}

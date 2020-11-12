@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { createWorker } from 'tesseract.js';
 import boons from './boons';
+import useCopyToClipboard from './useCopyToClipboard';
 
+
+console.log(boons)
 
 function App() {
-  const [ocr, setOcr] = useState();
+  const [ocr, setOcr] = useState('select an image above');
   const [image, setImage] = useState();
+  const [copy, isCopied] = useCopyToClipboard(1000);
 
   useEffect(() => {
     if (image) {
@@ -25,8 +29,6 @@ function App() {
     }
   }, [image]);
 
-  console.log(boons)
-
   return (
     <section className='wrapper'>
       <input
@@ -38,12 +40,13 @@ function App() {
         }}
       />
 
-      <label htmlFor='file' className='box box-interactive'>Find Security Report</label>
+      <label htmlFor='file' className='box box-interactive'>Upload Security Report</label>
       {image && <p className='box'>currently selected: {image.name}</p>}
 
-      <div className='results'>
-        <textarea value={ocr} readOnly placeholder='select an image above' />
-      </div>
+      <button className='results' onClick={() => copy(ocr)}>
+        {ocr}
+      </button>
+      {isCopied && <p className='fadeIn box'>Copied.</p>}
     </section>
   );
 }

@@ -4,16 +4,26 @@
 
 body {
   padding: 2em;
+  display: flex;
   background-image: url(./assets/than.png);
   background-size: cover;
   font-family: Arial, Helvetica, sans-serif;
   color: white;
 }
 
+#root { /* DONT USE IDs FOR STYLING */
+/* DON'T USE // FOR COMMENTS */
+
+  height: 100%;
+  align-self: center;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
-  width: 20vw;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
 }
 
 .results {
@@ -28,18 +38,12 @@ body {
   text-align: left;
 }
 
-.box {
-  --font: var(--font--default);
-  --border-color: #e5ebdf;
+.📦 {
   --background-color: transparent;
-  --border-radius: 8px;
 
   width: 100%;
   padding: 10px 32px 10px 16px;
-  border: 3px solid var(--border-color);
-  border-width: 0;
   margin-top: 8px;
-  border-radius: var(--border-radius);
   background-color: var(--background-color);
   transition:
     background-color 300ms ease-in-out,
@@ -47,19 +51,31 @@ body {
     border-color 300ms ease-in-out;
 }
 
-.box-interactive {
-  --background-color: #125b4a;
-  cursor: pointer;
+.🍑on {
+  --background-color: #a125b4;
+  --border-color: #e5ebdf;
+  --border-radius: 8px;
+
   width: max-content;
-  padding-left: 32px;
-  border-width: 3px;
+  padding: 10px 32px;
+  margin-left: -10px;
+  border: 3px solid var(--border-color);
+  border-radius: var(--border-radius);
+  color: white;
+  cursor: pointer;
+  background-color: var(--background-color);
 }
 
-.box-interactive:hover {
-  --background-color: transparent;
+.🍑on--grouped {
+  position: relative;
+  z-index: 1;
 }
 
-.box-interactive:focus {
+.🍑on:hover {
+  --background-color: #156b57;
+}
+
+.🍑on:focus {
   --border-color: #115462;
   box-shadow: 0 0 0 3px #e5ebdf;
   outline: 0;
@@ -72,6 +88,22 @@ body {
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
   white-space: nowrap;
+}
+
+.twitterStream {
+  height: 200px;
+  overflow: scroll;
+}
+
+.twitter-input {
+  position: relative;
+  z-index: 1;
+  height: 50px;
+  padding-left: 16px;
+  border: 0;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+  background: white;
 }
 
 .fadeIn {
